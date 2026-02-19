@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+      <header class="fixed w-full z-50 backdrop-blur-lg bg-white/70 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center px-6 py-4">
+
+      <!-- Logo -->
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-orange-400 to-yellow-400 shadow-md">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+        </div>
+        <span class="text-2xl font-bold bg-gradient-to-r from-orange-500 to-yellow-500 bg-clip-text text-transparent">
+          My-APIs
+        </span>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex space-x-8 font-medium">
+        <a href="{{ url_for('home') }}" class="hover:text-orange-500 transition duration-300">Home</a>
+        <a href="{{ url_for('accounts') }}" class="hover:text-orange-500 transition duration-300">All accounts</a>
+        <a href="#" class="hover:text-orange-500 transition duration-300">Services</a>
+        <a href="#" class="hover:text-orange-500 transition duration-300">Contact</a>
+      </nav>
+
+      <!-- CTA Button -->
+      <button class="hidden md:block bg-gradient-to-r from-orange-400 to-yellow-400 text-white px-6 py-2 rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition duration-300">
+        Get Started
+      </button>
+
+    </div>
+  </header>
+  <div>
+ <div class=" mx-auto px-6 py-10">
+ 
+
+  <div class="overflow-x-auto mt-16 bg-white shadow-xl rounded-2xl border border-gray-200">
+    <table class="min-w-full divide-y divide-gray-200">
+      
+      <!-- Table Head -->
+      <thead class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+        <tr>
+          <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">ID</th>
+          <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">ACC NO.</th>
+          <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">NAME</th>
+          <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">MOBILE</th>
+          <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">ADDRESS</th>
+          <th class="px-6 py-4 text-center text-sm font-semibold uppercase tracking-wider">Action</th>
+        </tr>
+      </thead>
+
+      <!-- Table Body -->
+      <tbody class="divide-y divide-gray-100 bg-white">
+        {% for ac in account %}
+        <tr class="hover:bg-gray-50 transition duration-200 ease-in-out">
+          <td class="px-6 py-4 text-sm text-gray-700 font-medium">{{ac.id}}</td>
+          <td class="px-6 py-4 text-sm text-gray-700">{{ac.cus_ac_holder}}</td>
+          <td class="px-6 py-4 text-sm text-gray-700">{{ac.cus_ac_no}}</td>
+          <td class="px-6 py-4 text-sm text-gray-700">{{ac.cus_mob}}</td>
+          <td class="px-6 py-4 text-sm text-gray-700">{{ac.cus_address}}</td>
+          
+          <!-- Action Buttons -->
+          <td class="px-6 py-4 text-center space-x-2">
+            
+            <!-- Read Button -->
+            <a href="" 
+               class="inline-block px-4 py-2 text-sm font-semibold text-white bg-blue-500 rounded-lg shadow hover:bg-blue-600 transition duration-200">
+               READ
+            </a>
+
+            <!-- Update Button -->
+            <a href="" 
+               class="inline-block px-4 py-2 text-sm font-semibold text-white bg-green-500 rounded-lg shadow hover:bg-green-600 transition duration-200">
+               UPDATE
+            </a>
+
+            <!-- Delete Button -->
+            <a href="{{ url_for('delete_account') }}" 
+               class="inline-block px-4 py-2 text-sm font-semibold text-white bg-red-500 rounded-lg shadow hover:bg-red-600 transition duration-200"
+               >
+               DELETE
+            </a>
+
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody> 
+
+    </table>
+  </div>
+</div>
+
+</body>
+</html>

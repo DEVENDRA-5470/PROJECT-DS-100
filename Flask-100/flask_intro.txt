@@ -1,0 +1,17 @@
+What is Flask
+
+Flask is a micro web framework written in python.
+it provides:
+Routing as function url.
+Request and response handling.
+Templates (HTML) using jinja2.
+Built-in development server.
+Database integration.
+
+Use cases:
+1.REST APIs development (common).
+2.SPA (Single page application).
+3.Machine learning model Deployment.
+4.Microservices.
+5.Dashboard.
+
