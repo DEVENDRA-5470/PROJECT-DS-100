@@ -33,9 +33,11 @@
       </nav>
 
       <!-- CTA Button -->
-      <button class="hidden md:block bg-gradient-to-r from-orange-400 to-yellow-400 text-white px-6 py-2 rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition duration-300">
-        Get Started
+      <a class="cursor-pointer" href="{{url_for('register')}}">
+         <button class="hidden cursor-pointer md:block bg-gradient-to-r from-orange-400 to-yellow-400 text-white px-6 py-2 rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition duration-300">
+        Register Now
       </button>
+       </a>
 
     </div>
   </header>
@@ -49,6 +51,7 @@
       <!-- Table Head -->
       <thead class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
         <tr>
+          <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">PHOTOS</th>
           <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">ID</th>
           <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">ACC NO.</th>
           <th class="px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider">NAME</th>
@@ -62,6 +65,9 @@
       <tbody class="divide-y divide-gray-100 bg-white">
         {% for ac in account %}
         <tr class="hover:bg-gray-50 transition duration-200 ease-in-out">
+          <td class="px-6 py-4 text-sm text-gray-700 font-medium">
+            <img width="100px" alt="Not found" src="{{ac.profile_image}}" alt="">
+          </td>
           <td class="px-6 py-4 text-sm text-gray-700 font-medium">{{ac.id}}</td>
           <td class="px-6 py-4 text-sm text-gray-700">{{ac.cus_ac_holder}}</td>
           <td class="px-6 py-4 text-sm text-gray-700">{{ac.cus_ac_no}}</td>
