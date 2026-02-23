@@ -29,14 +29,36 @@ def register():
 
 @app.route("/create-account",methods=["POST"])
 def create_account():
-    if request.method=="POST":
-        cus_ac_no=request.form.get("cus_ac_no")
-        cus_name=request.form.get("cus_name")
-        cus_mob=request.form.get("cus_mob")
-        cus_add=request.form.get("cus_add")
+    try:
+        if request.method=="POST":
+            cus_ac_no=request.form.get("cus_ac_no")
+            cus_name=request.form.get("cus_name")
+            cus_mob=request.form.get("cus_mob")
+            cus_add=request.form.get("cus_add")
+            image=request.files.get("profile_img")
 
-        
-    else:
-        return "I AM GET"
+            file={}
+
+            if image and image.filename != "":
+                file["profile_image"]=(
+                    image.filename,
+                    image.stream,
+                    image.mimetype,
+                )
+
+            payload={
+                "cus_ac_no":cus_ac_no,
+                "cus_ac_holder":cus_name,
+                "cus_mob":cus_mob,
+                "cus_address":cus_add
+            }
+            requests.post(URL+"create_account/",data=payload,files=file)
+            return redirect(url_for("accounts"))
+            # return f"{response.status_code} {response.text}"
+    
+    except Exception as e:
+        return str(e)
+
+    
 
 app.run(debug=True)
